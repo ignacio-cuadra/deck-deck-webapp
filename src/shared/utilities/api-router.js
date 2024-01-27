@@ -9,14 +9,16 @@ export default function apiRouter() {
     (
       route,
       action,
-      { authenticate, validations } = {
+      { authenticate, middlewares, validations } = {
         authenticate: false,
+        middlewares: [],
         validations: undefined,
       }
     ) => {
       fn = fn.bind(router);
       const params = [route];
       if (authenticate) params.push(verifyTokenMiddleware);
+      if (middlewares) params.push(...middlewares);
       if (validations) params.push(validations, validateMiddleware);
       params.push(expressAsyncHandler(action));
       return fn(...params);

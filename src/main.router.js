@@ -7,7 +7,6 @@ const mainRouter = express.Router();
 mainRouter.get("/", (req, res) => {
   res.json({ status: "on" });
 });
-
 mainRouter.use("/auth", authRouter);
 mainRouter.use("/decks", decksRouter);
 

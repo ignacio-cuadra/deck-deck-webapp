@@ -1,12 +1,21 @@
-import { DataTypes } from "sequelize";
-import db from "../../../shared/database/db.js";
+import { DataTypes, Model } from "sequelize";
+import sequelize from "../../../shared/database/sequelize.js";
 import Deck from "./deck.model.js";
 
-const Card = db.define(
-  "Card",
+export default class Card extends Model {
+  static associate() {
+    Card.belongsTo(Deck, {
+      foreignKey: "deckId",
+      as: "deck",
+    });
+  }
+}
+Card.init(
   {
     id: {
       type: DataTypes.UUID,
+      defaultValue: DataTypes.UUIDV4,
+      allowNull: false,
       primaryKey: true,
     },
     front: {
@@ -18,11 +27,5 @@ const Card = db.define(
       allowNull: false,
     },
   },
-  {
-    indexes: [{ unique: true, fields: ["id"] }],
-  }
+  { sequelize }
 );
-
-Deck.hasMany(Card);
-
-export default Card;

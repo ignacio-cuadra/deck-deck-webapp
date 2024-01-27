@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Email Template</title>
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        background-color: #e3e3e3;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+      .container {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        justify-content: center;
+        align-items: center;
+        background-color: #fafafa;
+        max-width: 600px;
+        margin: 0px auto;
+        padding: 20px;
+      }
+      .button {
+        background-color: rgb(59 130 246);
+        color: #fafafa;
+        padding: 10px;
+        min-width: 200px;
+        display: inline-block;
+        cursor: pointer;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Hola, {{name}}</h1>
+      <p>{{message}}</p>
+      <a href="{{link}}" class="button">{{label}}</a>
+    </div>
+  </body>
+</html>

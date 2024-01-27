@@ -1,15 +1,16 @@
 import { DataTypes, Model } from "sequelize";
 import sequelize from "../../../shared/database/sequelize.js";
-import Card from "./card.model.js";
-export default class Deck extends Model {
+import User from "./user.model.js";
+
+export default class RecoverPasswordToken extends Model {
   static associate() {
-    Deck.hasMany(Card, {
-      foreignKey: "deckId",
-      as: "cards",
+    RecoverPasswordToken.belongsTo(User, {
+      foreignKey: "userId",
+      as: "user",
     });
   }
 }
-Deck.init(
+RecoverPasswordToken.init(
   {
     id: {
       type: DataTypes.UUID,
@@ -17,9 +18,13 @@ Deck.init(
       allowNull: false,
       primaryKey: true,
     },
-    name: {
+    token: {
       type: DataTypes.STRING,
       allowNull: false,
+    },
+    expiresAt: {
+      type: DataTypes.DATE,
+      allowNull: true,
     },
   },
   { sequelize }

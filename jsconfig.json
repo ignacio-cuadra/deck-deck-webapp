@@ -1,0 +1,10 @@
+{
+  "include": [
+    "src/**/*.js",
+    "src/**/*.jsx",
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "src/config.js",
+    "assets/**/*.js"
+  ]
+}
